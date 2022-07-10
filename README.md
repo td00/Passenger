@@ -1,101 +1,74 @@
 # Passenger Password Manager
 
-TL;DR just show me [how to install.](#5)
+![Passenger Windows](https://raw.githubusercontent.com/Elagoht/Passenger/main/passenger-windows.png)
 
-## Table of Content
+Passenger is a fully browser compatible password manager originally made for
+Linux, and also works on Windows. Why there is an application like this when we
+have keepass apps?
 
-1. [What is Passenger?](#0)
-    * [How It Works?](#1)
-2. [Privacy](#2)
-    * [But Passwords Stores in a Local File?](#3)
-3. [Why is It Not Open Source?](#4)
-4. [Installation](#5)
-5. [Updates](#6)
-6. [Planning Updates](#7)
-7. [FAQ](#8)
-8. [Screenshots](#9)
+# Why To Use Passenger?
 
-<h2 id="0">What is Passenger</h2>
-Passenger is a password manager. I programmed it to keep my password safe. I know there is lots of password manager and also they have an online interface and online databases.
+## Make It Your Own
 
-The word **online** is not enough safe. If an hacker attacks to a big database that you store your password in, you are in danger. Not surprisingly, it happened to me. After that I started to program that software.
+Passenger is an open source project and it has a killer featue. Passenger
+allows you to develop your own encrypt/decrypt algorithm. Passenger is actually
+a GUI that manage your passwords. It keeps passwords in a local files, so you should backup these files.
 
-<h3 id="1">How It Works</h3>
-On first run, Passenger prompts you to create a password to register the app. Your password is going to encode and save into database. You will need that password to login to program next times.
+Local files are located in
 
-Passwords you add, will encode and save into databese. When you want to get that password you can click ***Copy*** button next to password info.
+```
+~/.passenger/
+```
 
-It writes all data into a file as multi-encryped format. On every action, it differently re-encrypted. 
+on Linux and
 
-<h2 id="2">Privacy</h2>
-Passenger can not reach to internet. You can test it via measuring network activity. So me, the developer cannot get your passwords. Only you can get your passwords after logging in and pressing copy buttons.
+```
+%appdata%/.passenger
+```
 
-A person who watches or records your screen, cannot see your passwords because you will get your passwords via clicking a button and, you will paste this password into a password area that censors your passwords.
+on Windows.
 
-Copying passwords also protects you from lots of keylogger viruses. If they cannot read your clipboard, they will never get your passwords becaoyse you will never write your passwords.
+## Easy Import and Export
 
-<h3 id="3">But Passwords Stores in a Local File?</h3>
+You can import the data exported from browsers. The program will guide you how to install.
 
-Briefly, There is 4 layers of security:
-1. Encoding algorithm encoded, and encoded code stored in source code in different ways.
-2. When an hacker breaks to the lowest layer, it will meet only a computer-readable object.
-3. The database object that encrypted encrypted with another encryption method.
-4. Finally, that multy encrypted database encrypted with another method that I develop.
-5. Bonus layer: After login, your passwords will stay encryped format until you press the copy button.
+## Constants
 
-<h2 id="4">Why is It Not Open Source?</h2>
-I would like to make it FOSS. But then a hacker would be able to break my encoding-decoding algorithm easily. We never want that. But as I say in privacy section, you can test this application anyway.
+You may not want to write exact same email adress to create a new entry. You can use constants that will make your job easy. You can also import and export your constants.
 
-<h2 id="5">How to Install</h2>
-If you using Windows, delete it and install Linux. We talking about privacy.
+# How to Install?
 
-*Just kiddin'. There is a Windows version. But I highly recommend you to try Linux.*
+Passenger is a GUI app but you can install a an executable with an closed
+source algorithm I wrote for people who don't know how to create an
+encrypt/decrypt algorithm.
 
-On linux:
+Alternatively you can install source code version to use your own algorithm.
+After that, if you want to you can compile to use in a more secure way.
 
-   1. Download zip and extract it. Then open directory in terminal (You can use **cd** command)
-   2. Type the command below:
-   > sudo ./install.sh
-   1. Well, You are done.
+## Install Executable Version (Easy Way)
 
-On windows:
+On releases section, download the package for your operating system and follow instructions below:
 
-I prepared a Winrar SFX to install it. Just run it or install manually with given archive.
+### On Linux
 
-<h2 id="6">Updates</h2>
+There's an install script. Open folder in terminal and execute it via command below:
 
-* Username cells changed with buttons so you can copy them via one click.
-* You can add constants to use shortcuts to access the same username/email. In example if you add a constant like " Email " and set it's value to " somebody@somemail.com " and add an entry with " $Email ". On button you will see " $Email " and you will know you will copy "somebody@somemail.com".
-* Now, you can export your data to a csv file as _**unencrypted format!**_ So do not show anyone this file. U can use this file to use "import from csv file." feature on web browsers excluding firefox and firefox based ones. Because firefox needs platforms' url that other browsers does not require. 
-* Encryption algorithm changed. In some cases, old algorithm were create a situation that user will lost that specific password. I had to develop a seed-generated algorithm instead of a dynamically-generated one. **But the program still uses 3 layers of encryption.
-* Now passwords in database, stores as encrypted format. So, this means when program read and encrypt the data base, your data will still stay encrypted format on ram. When you hit the copy button, it will be decrypted and presented to you.
+```sh
+sudo ./install.sh
+```
 
-<h2 id="7">Planning Updates</h2>
+This script will guide you to install the version you want to install. To uninstall you can use same script. The closed source version will re-encrypt your data in a different way after every action.
 
-* For extra security, I will add an security number between 1 and 100. It will require to login and play a seed role to encrypt your passwords.
-* I will add an option to read external databases. This will make the program portable.
-* The feature that excites me the most. There will be an **github integration** to backup your passwords in your own private repository.
+### On Windows
 
-<h2 id="8">FAQ</h2>
+There's a Winrar SFX file that makes install easy. It only installs closed source version. If you want to make your own, you can download and edit source code. You must install dependencies which are python, pyperclip, pyqt5, squirrel.
 
-* When we get a Mac version?
+**Note:** Windows has limitations that I do not like. Exact same algorithm can run on Linux but Windows does not execute that. So propriety version *currently* have open source algorithm which means not safe.
 
-> When I get a Mac to compile it on or when I decided to install a macintosh in Virtual Machine.
+# Mobile Phone Support
 
-* When will we get Safari import option?
+There will be a mobile application bu not soon. I have to learn a language to make it possible to run on mobile envrionments. Instead of this, I'll make an CLI application to run in termianal, and this will allows you to use it on terminal emulators, both desktop and mobile (search for termux and iShell).
 
-> Probably never. Export to csv and import the exported csv into a chromium based browser. Then open safari, import from other browser.
+# Conclusion
 
-<h2 id="9">Screenshots</h2>
-
-![Login Screen](https://raw.githubusercontent.com/Elagoht/Passenger/main/screenshots/passenger-login.png)
-
-![Query Screen](https://raw.githubusercontent.com/Elagoht/Passenger/main/screenshots/passenger-passwords.png)
-
-![Edit Screen](https://raw.githubusercontent.com/Elagoht/Passenger/main/screenshots/passenger-edit.png)
-
-![Reset Screen](https://raw.githubusercontent.com/Elagoht/Passenger/main/screenshots/passenger-resetpassword.png)
-
-![Import Screen](https://raw.githubusercontent.com/Elagoht/Passenger/main/screenshots/passenger-import.png)
-
-![Export Screen](https://raw.githubusercontent.com/Elagoht/Passenger/main/screenshots/passenger-export.png)
+This is a secure, open source project you can safely use. You may want to help me to improve application.
