@@ -36,7 +36,7 @@ build() {
 package() {
     # Create bin file
     install -d "$pkgdir/usr/bin/"
-    ln -s "/usr/share/Passenger/passenger.app" "/usr/bin/passenger"
+    ln -s "/usr/share/Passenger/passenger.app" "/usr/bin/passenger-pm"
     install -Dm755 "$srcdir/passenger" -t "$pkgdir/usr/bin/"
     install -d "$pkgdir/usr/share/passenger-pm/"
     mv "$srcdir/Passenger/assets" "$pkgdir/usr/share/passenger-pm"

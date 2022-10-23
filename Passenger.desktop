@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Passenger
+GenericName=Password Manager
+Comment=A password manager that keeps password encoded and cannot connect network.
+Exec=passenger-pm
+Icon=/usr/share/Passenger/Assets/passenger.png
+Terminal=false
+Type=Application
+Categories=Utility
+Keywords=password, manager
