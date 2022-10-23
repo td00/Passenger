@@ -15,7 +15,7 @@ from json import load
 from squirrel import StrBase
 from io import StringIO
 from pickle import loads
-from myendecode import en, de # encode/decode functions are here.
+from endecode import en, de # encode/decode functions are here.
 if "linux" in platform.lower():
     directory="/usr/share/passenger-pm"; currUsr=popen("echo $HOME").read().strip(); system(f"mkdir -pv {currUsr}/.passenger"); StrBaseDir=f"{currUsr}/.passenger/"
 else:
