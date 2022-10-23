@@ -5,6 +5,7 @@
 from PyQt5.QtWidgets import QAbstractItemView, QAction, QButtonGroup, QCheckBox, QComboBox, QDialog, QFileDialog, QGroupBox, QHeaderView, QMenu, QMessageBox, QRadioButton, QScrollArea, QShortcut, QTableWidget, QTableWidgetItem, QWidget, QMainWindow, QApplication, QGridLayout, QPushButton, QLabel, QLineEdit, QHBoxLayout
 from PyQt5.QtGui import QIcon, QKeySequence, QPixmap
 from PyQt5.QtCore import Qt
+from qdarktheme import load_stylesheet
 from pyperclip import copy
 from sys import exit, argv, platform
 from base64 import b64decode
@@ -14,14 +15,13 @@ from json import load
 from squirrel import StrBase
 from io import StringIO
 from pickle import loads
-from os import popen
-from endecode import en, de # encode/decode functions are here.
+from myendecode import en, de # encode/decode functions are here.
 if "linux" in platform.lower():
-    directory="/usr/share/Passenger"; currUsr=popen("echo $HOME").read().strip(); system(f"mkdir -pv {currUsr}/.passenger"); StrBaseDir=f"{currUsr}/.passenger/"
+    directory="/usr/share/passenger-pm"; currUsr=popen("echo $HOME").read().strip(); system(f"mkdir -pv {currUsr}/.passenger"); StrBaseDir=f"{currUsr}/.passenger/"
 else:
-    directory="."; currUsr=popen("echo %appdata%").read().strip(); system(f"if not exist '{currUsr}\\.passenger' mkdir {currUsr}\\.passenger"); StrBaseDir=f"{currUsr}\\.passenger\\"
+    directory="."; currUsr=popen(r"echo %appdata%").read().strip(); system(f"if not exist '{currUsr}\\.passenger' mkdir {currUsr}\\.passenger"); StrBaseDir=f"{currUsr}\\.passenger\\"
 try:
-    with open(f"{directory}/Assets/language.json",encoding="UTF-8") as json_file:
+    with open(f"{directory}/assets/language.json",encoding="UTF-8") as json_file:
         lang=load(json_file)
 except:
     lang={
@@ -1139,6 +1139,7 @@ class ConstantWindow(QDialog):
 app=QApplication(argv)
 app.setWindowIcon(QIcon(f"{directory}/Assets/passenger.svg"))
 app.lastWindowClosed.connect(lambda:[reEncrypt(),commit()] if passwords[1][2]=="True" else commit())
+app.setStyleSheet(load_stylesheet())
 win=MainWin()
 add=AddWindow()
 edit=EditWindow()
