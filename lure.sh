@@ -46,6 +46,7 @@ package() {
     install -Dm644 "Passenger/Passenger.desktop" -t "$pkgdir/usr/share/applications/"
     # Create bin file
     install -d "$pkgdir/usr/bin/"
-    ln -s "/usr/share/Passenger/passenger.app" "$pkgdir/usr/bin/passenger-pm"
+    ln -s "/usr/share/passenger-pm/passenger.app" "$pkgdir/usr/bin/passenger-pm"
     # Clean environment
+    rm -rf $srcdir/*
 }
