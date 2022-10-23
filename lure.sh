@@ -48,5 +48,5 @@ package() {
     install -d "$pkgdir/usr/bin/"
     ln -s "/usr/share/passenger-pm/passenger.app" "$pkgdir/usr/bin/passenger-pm"
     # Clean environment
-    rm -rf $srcdir/*
+    # rm -rf $srcdir/*
 }
